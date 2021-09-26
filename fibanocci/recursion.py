@@ -67,6 +67,14 @@ class Recursion:
         print()
 
     @staticmethod
+    def make_csvformat(matrix):
+        result = '"x", "y", "value"\n'
+        for i in range(len(matrix)):
+            for j in range(len(matrix)):
+                result +=f'{i},{j},{matrix[j][i]}\n'
+        return result
+
+    @staticmethod
     def sum_all_sides(side_list, matrix):
         sum = 0
         for i in range(len(side_list)):
@@ -83,15 +91,19 @@ class Recursion:
 
 if __name__ == "__main__":
     rec = Recursion()
-    map = rec.generate_map(5)
+    map = rec.generate_map(50)
     rec.fill_fence(map)
+    #rec.draw_matrix(map)
+    #map[15][15] = 300
 
 
-    for i in range(3000):
+    for i in range(100):
         rec.fill_middle(map)
-        rec.draw_matrix(map)
-        if(i == 299):
-            input()
-        else:
-            time.sleep(0.1)
-            os.system("clear")
+        #rec.draw_matrix(map)
+        #time.sleep(0.1)
+        #os.system('clear')
+    #rec.draw_matrix(map)
+    result = rec.make_csvformat(map)
+    f = open("data.csv", 'w')
+    f.write(result)
+    f.close()
