@@ -91,13 +91,13 @@ class Recursion:
 
 if __name__ == "__main__":
     rec = Recursion()
-    map = rec.generate_map(50)
+    map = rec.generate_map(100)
     rec.fill_fence(map)
     #rec.draw_matrix(map)
     #map[15][15] = 300
 
 
-    for i in range(100):
+    for i in range(1000):
         rec.fill_middle(map)
         #rec.draw_matrix(map)
         #time.sleep(0.1)
